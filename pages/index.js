@@ -11,7 +11,7 @@ export default function Home({ homes, postCodes }) {
 
   const { register, handleSubmit, setValue } = useForm();
   const [dataForm, setDataForm] = useState();
-  const [data, setData] = useState(homes.payload);
+  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
   const [status, setStatus] = useState(false);
@@ -38,7 +38,10 @@ export default function Home({ homes, postCodes }) {
     {
       name: 'Action',
       cell: (row) => <ActionComponent row={row} onClick={handleUpdate} onClickDelete={handleDelete} />,
-      width: 289
+      width: 289,
+      style: {
+        borderRight: '1px solid #E0E0E0',
+      }
     },
   ]);
 
@@ -57,7 +60,7 @@ export default function Home({ homes, postCodes }) {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    console.log('test use effect');
+    setData(homes.payload)
   }, [])
 
   const clearForm = () => {
@@ -103,7 +106,7 @@ export default function Home({ homes, postCodes }) {
   }
 
   const onCloseStatus = () => {
-    if(success) {
+    if (success) {
       setStatus(false)
       setSuccess(false)
     } else {
@@ -179,7 +182,7 @@ export default function Home({ homes, postCodes }) {
         </Container>
       </header>
       <main className={styles.main}>
-        <div className="container">
+        <Container>
           <div className={styles.mainHeader}>
             <Row className='align-items-center'>
               <Col md={10}>
@@ -190,13 +193,15 @@ export default function Home({ homes, postCodes }) {
               </Col>
             </Row>
           </div>
+        </Container>
+        <Container>
           <DataTable
             columns={columns}
             data={data}
             customStyles={customStyles}
             pagination
           />
-        </div>
+        </Container>
       </main>
       <footer className={styles.footer}>
         <Container>
