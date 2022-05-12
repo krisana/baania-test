@@ -1,0 +1,45 @@
+.header {
+  height: 170px;
+  width: 100%;
+  background-color: #F4F7FC;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 27px;
+}
+
+.main {
+  width: 100%;
+}
+
+.mainHeader {
+  /* flex: 1;
+  align-items: center;
+  justify-content: center; */
+  margin-bottom: 44px;
+}
+
+.footer {
+  height: 235px;
+  width: 100%;
+  background-color: #F4F7FC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.action {
+  width: 289px;
+}
+
+.modalStatus {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
