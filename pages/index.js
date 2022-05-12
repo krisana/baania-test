@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import DataTable from 'react-data-table-component';
 import { Modal, Form, FloatingLabel, Row, Col, Container, Button } from 'react-bootstrap';
 import { customStyles } from '../tableconfig';
-import { getPostCodeDetail, createHome, updateHome, getHomes } from '../services';
+import { getPostCodeDetail, createHome, updateHome, deleteHome, getHomes } from '../services';
 
 export default function Home({ homes, postCodes }) {
 
@@ -93,6 +93,13 @@ export default function Home({ homes, postCodes }) {
   const handleDelete = (row) => {
     setAction('delete')
     console.log('deleted', row);
+    deleteHome(row).then((res) => {
+      if (res.status === 200) {
+        getHomes().then((homes) => {
+          setData(homes.data.payload);
+        })
+      }
+    })
   }
 
   const onHandleClose = () => {

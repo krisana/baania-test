@@ -52,3 +52,12 @@ export async function updateHome(data) {
       return e.response;
   }
 }
+
+export async function deleteHome(data) {
+  try {
+      const response = await axios.delete('/home/' + data.id);
+      return response;
+  } catch (e) {
+      return e.response;
+  }
+}
